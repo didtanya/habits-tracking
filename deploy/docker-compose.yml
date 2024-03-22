@@ -1,0 +1,22 @@
+version: '3'
+
+volumes:
+  pg_kdata:
+
+services:
+  db:
+    image: postgres:13.10
+    environment:
+      POSTGRES_PASSWORD: tracking_password
+      POSTGRES_DB: tracking
+      POSTGRES_USER: tracking_user
+    ports:
+      - 5432:5432
+    volumes:
+      - pg_kdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend/
+    env_file: .env
+    depends_on:
+      - db

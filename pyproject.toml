@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "habits-tracking"
+version = "0.1.0"
+description = ""
+authors = ["DidenkoTanya <didenkotanja@yandex.ru>"]
+readme = "README.md"
+packages = [{include = "habits_tracking"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = "3.2.16"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
