@@ -17,14 +17,14 @@ WORKDIR /app/src
 COPY pyproject.toml poetry.lock /app/src/
 
 ## Install app requires
-RUN poetry config experimental.new-installer false
-RUN poetry config virtualenvs.create false && \
-    poetry install --no-interaction --no-ansi
+# RUN poetry config experimental.new-installer false
+# RUN poetry config virtualenvs.create false && \
+#     poetry install --no-interaction --no-ansi
 
-COPY ./ /app/src/
+# COPY ./ /app/src/
 
 # Move scripts to /app
 RUN find . -name '*.sh' -exec mv '{}' /app/ \;
 RUN poetry install --no-dev
 
-CMD ["gunicorn", "--bind", "0.0.0.0:9000", "tracking_project.wsgi"]
+CMD ["gunicorn", "--bind", "0.0.0.0:9000", "habits_tracking.wsgi"]

@@ -16,7 +16,7 @@ services:
       - pg_kdata:/var/lib/postgresql/data
 
   backend:
-    build: ./deploy/
-    env_file: .env
+    build: ./
+    env_file: ./.env
     depends_on:
       - db
