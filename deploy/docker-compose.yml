@@ -16,7 +16,14 @@ services:
       - pg_kdata:/var/lib/postgresql/data
 
   backend:
-    build: ./
-    env_file: ./.env
-    depends_on:
-      - db
+    build: 
+        dockerfile: ./deploy/
+# Dockerfile:
+    env_file: 
+      - ~/DEV/habits_tracking/.env
+    ports:
+      - "8000:8000"
+    container_name: backend_api
+    command: bash ./start-django-dev.sh
+    restart: unless-stopped
+
